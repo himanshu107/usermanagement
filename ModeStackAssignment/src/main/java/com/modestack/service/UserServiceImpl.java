@@ -36,7 +36,7 @@ public class UserServiceImpl extends RepositoryDependencyBean implements UserSer
 			return "Login successfully";
 			 
 		}else {
-			return "Please check your username and password";
+			return null;
 		}
 		
 	}
