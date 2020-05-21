@@ -33,7 +33,7 @@ public class UserServiceImpl extends RepositoryDependencyBean implements UserSer
 			 targetUrl ="/superadminredirect"; 
 			System.out.println("request comming");
 			 
-			return "superadminredirect";
+			return "Login successfully";
 			 
 		}else {
 			return "Please check your username and password";
