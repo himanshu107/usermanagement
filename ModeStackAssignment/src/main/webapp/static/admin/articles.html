@@ -1,0 +1,227 @@
+<div class="hk-pg-wrapper">
+<main class="main" data-ng-init="getAllArticles()"> <!-- Breadcrumb-->
+<ol class="breadcrumb">
+	<li class="breadcrumb-item active">Article Management</li>
+
+</ol>
+<div class="container-fluid">
+	<div class="animated fadeIn">
+		<div class="row"></div>
+		<!-- /.row-->
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-sm-5">
+						<h4 class="card-title mb-2">Articles Management</h4>
+					</div>
+					
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-6">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i
+									class="icon-magnifier-add icons"></i>
+								</span>
+							</div>
+							<input class="form-control" type="text" placeholder="Search"
+								data-ng-model="search">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<button type="submit"
+							class="btn btn-theme float-right"
+							data-ng-click="addNewArticlePopUp()">+NEW</button>
+					</div> 
+					
+					
+					<div class="col-xs-12 col-sm-12 col-md-12"
+							data-ng-show="successmessage">
+							<div class="alert alert-success">{{successmessage}}</div>
+						</div>
+					<div class="col-md-12">
+						<table class="table table-responsive event-mangement-table">
+							<thead>
+							
+								<tr>
+									<!-- <th>S.No</th> -->
+									<th data-ng-author="sort('courseName')" >Title
+									<span class="glyphicon sort-icon"
+									data-ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+									<span class="glyphicon sort-icon" data-ng-show="sortKey=='courseName'"></span>
+									</th>
+									<th data-ng-author="sort('courseStartDate')" > Body
+									<span class="glyphicon sort-icon"
+									data-ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+									<span class="glyphicon sort-icon" data-ng-show="sortKey=='courseStartDate'"></span>
+									</th>
+									
+									<th data-ng-author="sort('locationName')" >Author
+									<span class="glyphicon sort-icon"
+									data-ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+									<span class="glyphicon sort-icon" data-ng-show="sortKey=='locationName'"></span>
+									</th>
+									
+									
+									
+<!-- 									<th>Action</th> -->
+								</tr>
+							</thead>
+							<tbody>
+							<tr dir-paginate="article in allArticles |orderBy:sortKey:reverse|filter:search|itemsPerPage:10" current-page="currentPage"> 
+								
+
+								<td>{{article.title}}</td>
+								<td>{{article.body}}</td>
+								<td>{{article.author}}</td>
+								
+									<!-- <td>
+										<div class="dropdown dropleft show">
+											<a class="three-dot-link text-right" href="javascript:void(0)" role="button"
+												id="dropdownMenuLink2" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false"><img
+												src="resources/superadmin/img/three-dots.png"></a>
+											<div class="dropdown-menu three-dot-link-dropdown"
+												aria-labelledby="dropdownMenuLink2">
+													 <a class="dropdown-item"
+													href="javascript:void(0)"
+													data-ng-author="deleteauthor(author.dumId,author.userName)"><i class="fa fa-trash-o mr-3 btn btn-outline-danger" aria-hidden="true"></i>Delete</a>
+											</div>
+										</div>
+									</td> -->
+								</tr>
+							</tbody>
+						</table>
+						<div class="pull-right">
+						<dir-pagination-controls max-size="5" direction-links="true"
+								boundary-links="true"> </dir-pagination-controls>
+						</div>
+						
+					</div>
+				</div>
+				<!-- /.row-->
+			</div>
+		</div>
+		<!-- /.card-->
+	</div>
+</div>
+</main>
+</div>
+
+
+<div class="modal right right-modal fade addNewArticlePopUp" id="addNewArticlePopUp"
+		tabindex="-1" role="dialog" aria-labelledby="myModalLabe3"
+		data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog right-modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel1">Add New Page</h4>
+				</div>
+				<form name="editLinkForm" novalidate="novalidate"
+                    method="post">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12"
+                                data-ng-show="successmessage">
+                                <div class="alert alert-success">{{successmessage}}</div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12"
+                                data-ng-show="errormessage">
+                                <div class="alert alert-danger">{{errormessage}}</div>
+                            </div>
+                            
+                            
+                            <div class="col-xs-12 col-sm-12 col-md-12  mb-2">
+                                <h6 class=" border-bottom pb-2 text-primary">Add Article </h6>
+                            </div>
+
+
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <p class="weak">
+                                    Title: <span class="star">*</span>
+                                </p>
+                                <div class="form-group">
+                                    <input type="text" name="title" class="form-control" id="title" data-ng-model="addArticle.title" 
+                                     required="required" >
+                                        
+                                      
+                                </div>
+                                <div
+                                    data-ng-show="editLinkForm.$submitted || editLinkForm.title.$touched || editLinkForm.title.$dirty">
+                                    <div class="angular-validate-error  text-danger text-left text-size12"
+                                        data-ng-show="editLinkForm.title.$error.required">Please
+                                        Enter title</div>
+
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <p class="weak">
+                                    Body: <span class="star">*</span>
+                                </p>
+                                <div class="form-group">
+                                    <input type="text" name="linkAddress" class="form-control" id="linkAddress" data-ng-model="addArticle.body"
+                                     required="required">
+                                     
+                                </div>
+                                <div
+                                    data-ng-show="editLinkForm.$submitted || editLinkForm.linkAddress.$touched || editLinkForm.linkAddress.$dirty">
+                                    <div class="angular-validate-error  text-danger text-left text-size12"
+                                        data-ng-show="editLinkForm.linkAddress.$error.required">Please
+                                        Enter article body </div>
+                                       
+                                        
+
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <p class="weak">
+                                    Author: <span class="star">*</span>
+                                </p>
+                                <div class="form-group">
+                                    <input type="text" name="purpose" id="purpose" class="form-control" data-ng-model="addArticle.author"
+                                     required="required">
+                                     
+                                </div>
+                                <div
+                                    data-ng-show="editLinkForm.$submitted || editLinkForm.purpose.$touched || editLinkForm.purpose.$dirty">
+                                    <div class="angular-validate-error  text-danger text-left text-size12"
+                                        data-ng-show="editLinkForm.purpose.$error.required">Please
+                                        Enter author name</div>
+                                      
+                                        
+
+                                </div>
+                            </div>
+                            
+                      
+                    <div class="modal-footer">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">     
+                            <input type="button" value="Cancel" class="btn btn-secondary float-right"
+                                data-ng-click="closeaddNewArticlePopUp()" aria-label="Close">
+                            <button type="submit" class="btn btn-theme float-right mr-2"
+                                data-ng-click="saveArticle(addArticle,editLinkForm)">Save Article</button>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                </form>
+			</div>
+			<!-- modal-content -->
+		</div>
+		<!-- modal-dialog -->
+	</div>
+
+ <style>
+        .demo-section label {
+            display: block;
+            margin: 15px 0 5px 0;
+        }
+        #get {
+            float: right;
+            margin: 25px auto 0;
+        }
+    </style>
+

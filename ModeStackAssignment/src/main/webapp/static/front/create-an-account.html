@@ -1,0 +1,238 @@
+
+        <section class="breadcrumb_area breadcrumb_area-app-run">
+        
+        </section>
+
+    
+
+        <section class="login_area" style="background-color: #fbfbfb">
+             <div class="container" data-ng-if="contentShow == false">
+                <div class="sign_info">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="l
+                            ogin_info">
+                                <h2 class="f_p f_600 f_size_24 t_color3 mb_40">Login</h2>
+                                 <form name="user.registrationForm" ng-submit="user.frontloginsubmit" novalidate="novalidate" method="post" class="contact-form form-auth-small">
+                              <div class="w-100 float-left"
+							data-ng-show="failuremessage">
+							<div class="text-danger">{{failuremessage}}</div>
+						</div>
+                                    
+                                    
+                                     <div class="form-group text_box">
+                                        <label class="f_p text_c f_400">Username</label>
+                                          <input type="text" class="form-control"  name="name" placeholder="Enter your email"
+                                          data-ng-model="user.username" 
+						  					required="required"  >
+						                       
+						                        <div data-ng-show="registrationForm.$submitted || registrationForm.name.$dirty">
+							<div class="angular-validate-error  text-danger text-left text-size12"
+								data-ng-show="registrationForm.name.$error.required">Please Enter
+								Your user name</div>
+								
+							
+						</div>
+                                    </div>
+                                    
+                                    <div class="form-group text_box">
+                                        <label class="f_p text_c f_400">Email</label>
+                                          <input type="email" class="form-control"  name="email" placeholder="Enter your email" 
+						data-ng-model="user.email"  required="required"  data-ng-pattern="/^[a-zA-Z0-9]+[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z.]{2,5}$/">
+						                       
+						                        <div data-ng-show="registrationForm.$submitted || registrationForm.email.$dirty">
+							<div class="angular-validate-error  text-danger text-left text-size12"
+								data-ng-show="registrationForm.email.$error.required">Please Enter
+								Your Email</div>
+								
+							<div class="angular-validate-error  text-danger text-left text-size12"
+								data-ng-show="registrationForm.email.$error.pattern">Please
+								Enter Valid Email Address</div>
+						</div>
+                                    </div>
+                                    <div class="form-group text_box">
+                                        <label class="f_p text_c f_400">Password</label>
+                                        <input type="password" class="form-control" name="password"
+						placeholder="Enter your password" data-ng-model="user.password"
+						autocomplete="off"  required="required" />
+						
+						<div
+						data-ng-show="registrationForm.$submitted || registrationForm.password.$dirty">
+						<div
+							class="angular-validate-error  text-danger text-left text-size12"
+							data-ng-show="registrationForm.password.$error.required">Please Enter
+							Password</div>
+					</div>
+					
+					 <div class="form-group text_box">
+                                        <label class="f_p text_c f_400">Address</label>
+                                          <input type="text" class="form-control"  name="address" placeholder="Enter your email" 
+						data-ng-model="user.address"  required="required"  >
+						                       
+						                        <div data-ng-show="registrationForm.$submitted || registrationForm.address.$dirty">
+							<div class="angular-validate-error  text-danger text-left text-size12"
+								data-ng-show="registrationForm.address.$error.required">Please Enter
+								Your address</div>
+							
+						</div>
+                                    </div>
+                                    </div>
+                                   
+                                    <br>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button type="submit" class="btn_three mt-0"  type="submit" 
+						data-ng-click="registeUser(user,user.registrationForm)">Signup</button>
+						
+                                        <div class="social_text d-flex ">
+                                            <div class="lead-text"><span>Do you have an account? <a href="#!/login">Login here </a></span></div>
+                                            
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="javascript:void(0)" data-ng-click="showForgotPassword()">Forgot password?</a></span>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                           <!--   <img src="resources/front/img/login_img.png" class="img-fluid"> -->
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- old code starts here  -->
+<div class="d-none">
+<div class="w-100 float-left">
+<div id="wrapper">
+		<div class="vertical-align-wrap">
+			<div class="vertical-align-middle auth-main">
+				<div class="auth-box">
+                    <div class="mobile-logo"><a href="index.html"><img src="../assets/images/logo-icon.svg" alt="Mplify"></a></div>
+                    <div class="auth-left">
+                        
+                        <div class="left-slider">
+                            <img src="resources/front/images/click-login.jpg" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="auth-right">
+                      
+                        <div class="card">
+                            <div class="header">
+                                <p class="lead">Log in</p>
+                            </div>
+                            <div class="body">
+                              <form name="registrationForm" novalidate="novalidate" method="post" class="contact-form form-auth-small">
+                              
+                         <div class="w-100 float-left"
+							data-ng-show="failuremessage">
+							<div class="text-danger">{{failuremessage}}</div>
+						</div>
+						<div class="w-100 float-left"
+							data-ng-show="failuremessage">
+							<div class="text-success">{{message}}</div>
+						</div>
+                                    <div class="form-group">
+                                        <label for="signin-email" class="control-label sr-only">Email</label>
+                                        <input type="email" class="form-control"  name="email" placeholder="Enter your email" 
+						data-ng-model="user.email"  required="required"  data-ng-pattern="/^[a-zA-Z0-9]+[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z.]{2,5}$/">
+						                       
+						                        <div data-ng-show="registrationForm.$submitted || registrationForm.email.$dirty">
+							<div class="angular-validate-error  text-danger text-left text-size12"
+								data-ng-show="registrationForm.email.$error.required">Please Enter
+								Your Email</div>
+								
+							<div class="angular-validate-error  text-danger text-left text-size12"
+								data-ng-show="registrationForm.email.$error.pattern">Please
+								Enter Valid Email Address</div>
+						</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signin-password" class="control-label sr-only">Password</label>
+                                       
+                                   <input type="password" class="form-control" name="password"
+						placeholder="Enter your password" data-ng-model="user.password"
+						autocomplete="off"  required="required" />
+						
+						<div
+						data-ng-show="registrationForm.$submitted || registrationForm.password.$dirty">
+						<div
+							class="angular-validate-error  text-danger text-left text-size12"
+							data-ng-show="registrationForm.password.$error.required">Please Enter
+							Password</div>
+					</div>
+                                   
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block" 
+						data-ng-click="frontloginsubmit(user,registrationForm)">LOGIN</button>
+                                    <div class="bottom">
+                                        <!-- <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a>Forgot password?</a></span> -->
+                                        <span>Do you have an account? <a href="#!/login">Login here </a></span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+     <div class="container" data-ng-if="contentShow == true">
+                <div class="sign_info">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="l
+                            ogin_info">
+                                <h2 class="f_p f_600 f_size_24 t_color3 mb_40">Forgot password</h2>
+                                 <form name="registrationForm" novalidate="novalidate" method="post" class="contact-form form-auth-small">
+                              <div class="w-100 float-left"
+							data-ng-show="failuremessage">
+							<div class="text-danger">{{failuremessage}}</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12"
+						data-ng-show="successmessage">
+						<div class="alert alert-success">{{successmessage}}</div>
+					</div>
+                                    <div class="form-group text_box">
+                                        <label class="f_p text_c f_400">Enter the email address you used when creating the account and click Send Email. A message will be sent to that address containing a link to reset your password.</label>
+                                          <input type="email" class="form-control"  name="email" placeholder="Enter your email" 
+						data-ng-model="user.email"  required="required"  data-ng-pattern="/^[a-zA-Z0-9]+[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z.]{2,5}$/">
+						                       
+						                        <div data-ng-show="registrationForm.$submitted || registrationForm.email.$dirty">
+							<div class="angular-validate-error  text-danger text-left text-size12"
+								data-ng-show="registrationForm.email.$error.required">Please Enter
+								Your Email</div>
+								
+							<div class="angular-validate-error  text-danger text-left text-size12"
+								data-ng-show="registrationForm.email.$error.pattern">Please
+								Enter Valid Email Address</div>
+						</div>
+                                    </div>
+                                
+                                    
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button type="submit" class="btn_three mt-0"  type="submit" 
+						data-ng-click="forgetPassword(user.email,registrationForm)">Send Email</button>
+						
+                                        <div class="social_text d-flex ">
+                                            <div class="lead-text">Do you have an account? <a href="#!/login">Login here </a></div>
+                                            
+                                        </div>
+                                    </div>
+                                    <br>
+<!--                                     <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="javascript:void(0)">Forgot password?</a></span> -->
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                             <img src="resources/front/img/login_img.png" class="img-fluid">
+                         </div>
+                    </div>
+                </div>
+            </div>      
+          
